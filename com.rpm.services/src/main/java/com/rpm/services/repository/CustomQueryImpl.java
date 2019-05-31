@@ -1,4 +1,4 @@
-package com.rpm.services.dao;
+package com.rpm.services.repository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,20 +6,24 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Repository;
 
 import com.rpm.services.model.DynamicQuery;
+import com.rpm.services.model.OperatorEnum;
 
+/**
+ * @author MohanRamu
+ *
+ * @param <T>
+ */
 @Repository
 public class CustomQueryImpl<T> implements CustomQuery<T> {
 
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-	
 	@Autowired
 	private final MongoTemplate mongoTemplate;
 
@@ -32,12 +36,31 @@ public class CustomQueryImpl<T> implements CustomQuery<T> {
 	public List<T> getByDynamicQuery(DynamicQuery dynamicQuery) {
 		final Query query = new Query();
 		final List<Criteria> criteria = new ArrayList<>();
-
-		if (dynamicQuery.getOperator().equalsIgnoreCase("equal")) {
+		OperatorEnum operations = OperatorEnum.valueOf(dynamicQuery.getOperator());
+		switch (operations) {
+		case eq:
 			criteria.add(Criteria.where(dynamicQuery.getKey()).is(dynamicQuery.getValue()));
-		} else {
-			criteria.add(Criteria.where(dynamicQuery.getKey()).gte((dynamicQuery.getValue())));
+			break;
+		case gte:
+			criteria.add(Criteria.where(dynamicQuery.getKey()).gte(dynamicQuery.getValue()));
+			break;
+		case lte:
+			criteria.add(Criteria.where(dynamicQuery.getKey()).lte(dynamicQuery.getValue()));
+			break;
+
+		case regex:
+			criteria.add(Criteria.where(dynamicQuery.getKey()).regex(dynamicQuery.getValue()));
+			break;
+
+		case in:
+			criteria.add(Criteria.where(dynamicQuery.getKey()).in(dynamicQuery.getValue()));
+			break;
+
+		default:
+			criteria.add(Criteria.where(dynamicQuery.getKey()).is(dynamicQuery.getValue()));
+			break;
 		}
+
 		/*
 		 * if(dynamicQuery.getAuthorNameLike() != null) {
 		 * criteria.add(Criteria.where("authorNames").regex(MongoRegexCreator.INSTANCE.

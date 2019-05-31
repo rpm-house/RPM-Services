@@ -2,8 +2,12 @@ package com.rpm.services.model;
 
 import java.io.Serializable;
 
-public class DynamicQuery implements Serializable{
-	
+/**
+ * @author MohanRamu
+ *
+ */
+public class DynamicQuery implements Serializable {
+
 	/**
 	 * 
 	 */
@@ -12,9 +16,9 @@ public class DynamicQuery implements Serializable{
 	private String entity;
 
 	private String key;
-	
+
 	private String value;
-	
+
 	private String operator;
 
 	public String getEntity() {
@@ -49,11 +53,14 @@ public class DynamicQuery implements Serializable{
 		this.operator = operator;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#toString()
+	 */
 	@Override
 	public String toString() {
 		return "DynamicQuery [entity=" + entity + ", key=" + key + ", value=" + value + ", operator=" + operator + "]";
 	}
-
-	
 
 }
