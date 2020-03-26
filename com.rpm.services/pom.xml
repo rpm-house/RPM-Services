@@ -19,6 +19,12 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+			<exclusions>
+				<exclusion>
+				 <groupId>org.apache.tomcat</groupId>
+				 <artifactId>tomcat-websocket</artifactId>
+				</exclusion>
+		    	</exclusions>
 		</dependency>
 		
 		<!-- spring boot mongodb dependency. -->
@@ -26,34 +32,12 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-mongodb</artifactId>
 		</dependency>
-		<dependency>
-		    <groupId>org.eclipse.jetty</groupId>
-		    <artifactId>jetty-maven-plugin</artifactId>
-		    <version>9.4.24.v20191120</version>
-		     <exclusions>
-			<exclusion>
-			    <groupId>org.eclipse.jetty</groupId>
-			    <artifactId>apache-jsp</artifactId>
-			</exclusion>
-		     </exclusions>
-		</dependency>
+		
 	</dependencies>
 
 	<build>
 		<finalName>RPMServices</finalName>
-		<plugins>		
-		  <plugin>
-			<groupId>org.eclipse.jetty</groupId>
-			<artifactId>jetty-maven-plugin</artifactId>
-			<version>9.4.24.v20191120</version>
-                <configuration>
-                    <scanIntervalSeconds>10</scanIntervalSeconds>
-                    <webApp>
-                        <contextPath>/ezops-preprocessor</contextPath>
-                    </webApp>
-                </configuration>
-            	</plugin>
-	     </plugins>
+		
 	</build>
 
 </project>
