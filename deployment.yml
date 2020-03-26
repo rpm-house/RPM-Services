@@ -1,0 +1,35 @@
+apiVersion: v1  
+kind: Service  
+metadata:  
+  name: best-bin-service  
+  labels:  
+    app: best-bin-service  
+spec:  
+  ports:  
+    - name: http  
+      port: 8000  
+  selector:  
+    app: best-bin-service  
+---  
+apiVersion: extensions/v1beta1  
+kind: Deployment  
+metadata:  
+  name: best-bin-service  
+spec:  
+  replicas: 1  
+  template:  
+    metadata:  
+      labels:  
+        app: best-bin-service  
+        version: v1  
+    spec:  
+      containers:  
+        - name: best-bin-service 
+          image: gcr.io/kyma-hack/best-bin-service:1.0  
+          imagePullPolicy: IfNotPresent  
+          env:  
+            - name: MONGODB_HOST  
+              value: mongodb  
+          ports:  
+            - containerPort: 8000  
+          

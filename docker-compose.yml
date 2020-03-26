@@ -1,0 +1,22 @@
+version: "3"
+services:
+  mongodb:
+    image: mongo
+    container_name: "mongodb"
+    ports:
+    - 27017:27017
+    restart: always
+    env_file: .env
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=$MONGO_USERNAME
+      - MONGO_INITDB_ROOT_PASSWORD=$MONGO_PASSWORD
+  app:
+    image: rmdmohan/best-bin-services:1.0
+    ports:
+    - 8080:8080
+    links:
+    - mongodb
+    volumes:  
+      - dbdata:/data/db  
+    networks:
+      - app-network
