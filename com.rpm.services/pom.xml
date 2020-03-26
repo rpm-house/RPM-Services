@@ -41,19 +41,19 @@
 
 	<build>
 		<finalName>RPMServices</finalName>
+		<plugins>		
 		  <plugin>
-                <groupId>org.eclipse.jetty</groupId>
-                <artifactId>jetty-maven-plugin</artifactId>
-                <version>9.4.24.v20191120</version>
-
+			<groupId>org.eclipse.jetty</groupId>
+			<artifactId>jetty-maven-plugin</artifactId>
+			<version>9.4.24.v20191120</version>
                 <configuration>
                     <scanIntervalSeconds>10</scanIntervalSeconds>
                     <webApp>
                         <contextPath>/ezops-preprocessor</contextPath>
                     </webApp>
                 </configuration>
-
-            </plugin>
+            	</plugin>
+	     </plugins>
 	</build>
 
 </project>
