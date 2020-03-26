@@ -1,7 +1,9 @@
 package com.rpm.services;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.mongodb.MongoDbFactory;
 
 /**
  * @author MohanRamu
@@ -10,6 +12,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class ServiceApplication {
 
+	@Autowired
+	private MongoDbFactory mongoDbFactory;
+	
 	/**
 	 * @param args
 	 */

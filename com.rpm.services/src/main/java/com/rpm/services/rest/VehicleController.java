@@ -7,6 +7,7 @@ import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,6 +25,7 @@ import com.rpm.services.service.VehicleService;
  * @author MohanRamu
  *
  */
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping(value = "/api/vehicle")
 public class VehicleController {
@@ -53,9 +55,9 @@ public class VehicleController {
 	 * @return
 	 */
 	@PostMapping(value = "/createAll")
-	public String createAll(@RequestBody List<Vehicle> emp) {
+	public String createAll(@RequestBody List<Vehicle> vehicles) {
 		logger.debug("Saving vehicles.");
-		service.createVehicles(emp);
+		service.createVehicles(vehicles);
 		return "Vehicle records created.";
 	}
 

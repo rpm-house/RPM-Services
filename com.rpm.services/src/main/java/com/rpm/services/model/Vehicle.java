@@ -28,7 +28,7 @@ public class Vehicle implements Serializable {
 	private String customerId;
 	private String customerName;
 	private String contractName;
-	private String stateOfResisteration;
+	private String stateOfRegistration;
 	private String mobileNo;
 
 	public int getVehicleId() {
@@ -112,11 +112,11 @@ public class Vehicle implements Serializable {
 	}
 
 	public String getStateOfResisteration() {
-		return stateOfResisteration;
+		return stateOfRegistration;
 	}
 
 	public void setStateOfResisteration(String stateOfResisteration) {
-		this.stateOfResisteration = stateOfResisteration;
+		this.stateOfRegistration = stateOfResisteration;
 	}
 
 	public String getMobileNo() {
