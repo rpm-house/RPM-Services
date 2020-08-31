@@ -1,0 +1,14 @@
+<header>
+  <div class="home">
+    <img [src] = "bbLogo" class = "bbLogo"/>
+    <span class="heading">Best Bin</span>
+  <nav>
+    <ul>
+      <li><a href="#" routerLink="/" routerLinkActive="active">Products</a></li>
+      <li *ngIf="isLoggedIn;else elseBlock"><a href="/" (click)="logout()">Log Out</a></li>
+      <ng-template #elseBlock><li><a routerLink="/login" routerLinkActive="active">Login</a></li></ng-template>
+      <li><a href="#" routerLink="/cart" routerLinkActive="active">Cart {{cartCount}}</a></li>
+    </ul>
+  </nav>
+</div>
+</header>

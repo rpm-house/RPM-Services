@@ -1,0 +1,45 @@
+$primary:rgb(82, 158, 194);
+$sec:rgba(10, 170, 245, 0.5);
+.home{
+  width: 80%;
+  margin: 0 auto;
+  .bbLogo{
+  height : 100px;
+  }
+
+}
+
+header{
+  background-color: $primary;
+ // padding: 1em;
+a{
+  text-decoration: none;
+}
+.heading{
+  padding-left: 300px;
+    font-size: xx-large;
+    font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+}
+  nav{
+    float: right;
+    ul{
+      list-style-type: none;
+      margin: 0;
+      display: flex;
+    }
+    li{
+      padding-top: 30px;
+      font-size: larger;
+     a{
+      padding: 1em;
+      color: black;
+      & :hover{
+        background: darken($primary, 10%);
+      }
+    }
+  }
+  }
+}
+.logo{
+  transform: translate(0, -35px);
+}
