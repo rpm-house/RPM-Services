@@ -3,9 +3,13 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "best-bin-ui": {
+    "best-bin": {
       "projectType": "application",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -13,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/best-bin-ui",
+            "outputPath": "dist/best-bin",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -24,7 +28,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.scss",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
             "scripts": []
           },
@@ -63,18 +68,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "best-bin-ui:build"
+            "browserTarget": "best-bin:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "best-bin-ui:build:production"
+              "browserTarget": "best-bin:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "best-bin-ui:build"
+            "browserTarget": "best-bin:build"
           }
         },
         "test": {
@@ -89,7 +94,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.scss"
             ],
             "scripts": []
           }
@@ -111,15 +116,15 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "best-bin-ui:serve"
+            "devServerTarget": "best-bin:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "best-bin-ui:serve:production"
+              "devServerTarget": "best-bin:serve:production"
             }
           }
         }
       }
     }},
-  "defaultProject": "best-bin-ui"
+  "defaultProject": "best-bin"
 }

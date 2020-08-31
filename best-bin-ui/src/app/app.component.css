@@ -1,31 +1,23 @@
-body {
- position: fixed; 
- background-color: #2F3035;
+
+.container{
+  background-color: aliceblue;
 }
-.best-in-main{
-	
-	//background-color: dimgrey;
-	width : 1255px;
-	height: 555px;
-	/*padding-top: 200px;
-	padding-right: 200px;
-	padding-left: 350px;*/
-	}
-	
-	.container{
-		
-		background-color: #92a8d1;
-	width : 400px;
-	height: 250px;
-	margin-left:auto;
-	margin-right:auto;
-	margin-bottom:auto;
-	margin-top:auto;
-	
-	}
-	
-@media only screen and (max-width: 1280px) {
-  body {
-    background-color: #92a8d1;
-  }
+.tile{
+  margin-left:auto;
 }
+.imgSize{
+    width:  100px;
+    height: 100px;
+    background-size: cover;
+ }
+.details{
+  padding-left: 65px;
+}
+
+.cart{
+  padding-left: 10px;
+    width: 45px;
+    height: 25px;
+    padding-bottom: 2px;
+}
+
